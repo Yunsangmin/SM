@@ -1,0 +1,56 @@
+#뽑기 게임
+
+print("""
+행운의 도박 게임!!
+1등 : 1000배, 확률 0.01%
+2등 : 100배, 확률 0.5%
+3등 : 5배, 확률 4%
+4등 : 2배, 확률 30%
+나머지 : 잔액 절반 (1/2)
+""")
+
+invest = int(input("얼마를 투자하시겠습니까?"))
+print(invest, "원 투자하셨습니다. 계속 하려면 엔터, 그만하려면 0 눌러주세요.")
+enter = input()
+coin = invest
+
+import random
+chance = random.random()
+while enter != "0" :
+    if int(coin) == 0 :
+        print("전 재산 탕진! 돌아가십쇼^^")
+        break
+    if chance <= 0.0001 :
+        print("1등! 1000배 획득!")
+        coin = coin * 1000
+        print("잔액 :", int(coin),"원")
+        chance = random.random()
+    elif chance <= 0.0051 :
+        print("2등! 100배 획득!")
+        chance = random.random()
+        coin = coin * 100
+        print("잔액 :", int(coin),"원")        
+    elif chance <= 0.0451 :
+        print("3등! 5배 획득!")
+        coin = coin * 3
+        print("잔액 :", int(coin),"원")
+        chance = random.random()
+    elif chance <= 0.3451 :
+        print("4등! 2배 획득!")
+        coin = coin * 2
+        print("잔액 :", int(coin),"원")
+        chance = random.random()
+    else :
+        print("꽝 ㅋ 절반 싹둑")
+        coin = coin / 2
+        print("잔액 :", int(coin),"원")
+        chance = random.random()
+    enter = input()
+
+print(invest,"원 투자해서", int(coin), "원 가져갑니다.")
+
+if invest > coin :
+    print( int(invest) - int(coin) , "원 손해봤습니다 ㅋ")
+
+if invest <  coin :
+    print( int(coin) - int(invest), "원 이득입니다.")
